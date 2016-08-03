@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+
+Route::get('/index', 'myResourceController@index');
+
+Route::get('/show/{name_from_client}', 'myResourceController@show');

@@ -38,7 +38,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">Laravel 5 ~ Hi ~ {{$name_from_server}}</div>
             </div>
         </div>
     </body>
