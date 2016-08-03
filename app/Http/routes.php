@@ -11,10 +11,14 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return view('welcome');
+});
 
+
+//Route::get('/', function () {
+//    return view('myView');
+//});
 
 Route::get('/index', 'myResourceController@index');
 

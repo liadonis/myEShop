@@ -15,7 +15,8 @@ class myResourceController extends Controller
      */
     public function index()
     {
-        return 'myResourceController ~ index';
+//        return 'myResourceController ~ index';
+        return view("myView",["from_server" => "I'm from server"]);
     }
 
     /**
