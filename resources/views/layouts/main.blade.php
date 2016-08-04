@@ -114,14 +114,15 @@
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="{{url("/")}}" class="active">Home</a></li>
-                            <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                                <ul role="menu" class="sub-menu">
-                                    <li><a href="{{url("/products")}}">Products</a></li>
-                                    <li><a href="{{url("/products/category")}}">Product Details</a></li>
+                            <li><a href="{{url("/products")}}">Shop</a>
+                            {{--<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>--}}
+                                {{--<ul role="menu" class="sub-menu">--}}
+                                    {{--<li><a href="{{url("/products")}}">Products</a></li>--}}
+                                    {{--<li><a href="{{url("/products/category")}}">Product Details</a></li>--}}
                                     {{--<li><a href="checkout.html">Checkout</a></li>--}}
                                     {{--<li><a href="cart.html">Cart</a></li>--}}
                                     {{--<li><a href="login.html">Login</a></li>--}}
-                                </ul>
+                                {{--</ul>--}}
                             </li>
                             <li><a href="{{url("/blog")}}">Blog</a></li>
                             {{--<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>--}}
@@ -313,5 +314,6 @@
 <script src="{{asset("js/price-range.js")}}"></script>
 <script src="{{asset("js/jquery.prettyPhoto.js")}}"></script>
 <script src="{{asset("js/main.js")}}"></script>
+@yield("script")
 </body>
 </html>
