@@ -48,6 +48,11 @@ class mycontroller extends Controller
         return "blog_post $id";
     }
 
+    public function blog_single()
+    {
+        return view("blog_single");
+    }
+
     public function search($key_word)
     {
         return "search $key_word";

@@ -31,6 +31,8 @@ Route::get('/products/brands', "mycontroller@brands");
 
 Route::get('/blog', "mycontroller@blog");
 
+Route::get('/blog/single', "mycontroller@blog_single");
+
 Route::get('/blog/post/{id}', "mycontroller@blog_post");
 
 Route::get('/search/{key_word}', "mycontroller@search");
