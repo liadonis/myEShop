@@ -30,7 +30,7 @@ class mycontroller extends Controller
 
     public function products()
     {
-        return "products";
+        return view("product");
     }
 
     public function products_category()

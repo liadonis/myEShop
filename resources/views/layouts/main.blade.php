@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | E-Shopper</title>
+    <title>@yield("title") | E-Shopper</title>
     <link href="{{asset("css/bootstrap.min.css")}}" rel="stylesheet">
     <link href="{{asset("css/font-awesome.min.css")}}" rel="stylesheet">
     <link href="{{asset("css/prettyPhoto.css")}}" rel="stylesheet">
@@ -116,14 +116,14 @@
                             <li><a href="{{url("/")}}" class="active">Home</a></li>
                             <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
-                                    <li><a href="shop.html">Products</a></li>
-                                    <li><a href="product-details.html">Product Details</a></li>
+                                    <li><a href="{{url("/products")}}">Products</a></li>
+                                    <li><a href="{{url("/products/category")}}">Product Details</a></li>
                                     {{--<li><a href="checkout.html">Checkout</a></li>--}}
                                     {{--<li><a href="cart.html">Cart</a></li>--}}
                                     {{--<li><a href="login.html">Login</a></li>--}}
                                 </ul>
                             </li>
-                            <li><a href="#">Blog</a></li>
+                            <li><a href="{{url("/blog")}}">Blog</a></li>
                             {{--<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>--}}
                                 {{--<ul role="menu" class="sub-menu">--}}
                                     {{--<li><a href="blog.html">Blog List</a></li>--}}
@@ -131,7 +131,7 @@
                                 {{--</ul>--}}
                             {{--</li>--}}
                             {{--<li><a href="404.html">404</a></li>--}}
-                            <li><a href="contact-us.html">Contact</a></li>
+                            <li><a href="{{url("/contact_us")}}">Contact</a></li>
                         </ul>
                     </div>
                 </div>
