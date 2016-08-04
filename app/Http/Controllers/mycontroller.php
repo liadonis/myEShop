@@ -35,7 +35,7 @@ class mycontroller extends Controller
 
     public function products_category()
     {
-        return "products_category";
+        return view("products_category");
     }
 
     public function blog()
@@ -55,12 +55,12 @@ class mycontroller extends Controller
 
     public function cart()
     {
-        return "cart";
+        return view("cart");
     }
 
     public function checkout()
     {
-        return "checkout";
+        return view("checkout");
     }
 
     public function account()
