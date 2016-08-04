@@ -40,7 +40,7 @@ class mycontroller extends Controller
 
     public function blog()
     {
-        return "blog";
+        return view("blog");
     }
 
     public function blog_post($id)
