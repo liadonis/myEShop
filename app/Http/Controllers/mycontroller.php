@@ -20,7 +20,7 @@ class mycontroller extends Controller
 
     public function login()
     {
-        return "login";
+        return view("login");
     }
 
     public function logout()
@@ -62,4 +62,10 @@ class mycontroller extends Controller
     {
         return "checkout";
     }
+
+    public function account()
+    {
+        return "account";
+    }
+
 }
