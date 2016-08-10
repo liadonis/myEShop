@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>@yield("title") | E-Shopper</title>
+    <title>{{$title}} | E-Shopper</title>
     <link href="{{asset("css/bootstrap.min.css")}}" rel="stylesheet">
     <link href="{{asset("css/font-awesome.min.css")}}" rel="stylesheet">
     <link href="{{asset("css/prettyPhoto.css")}}" rel="stylesheet">
@@ -113,8 +113,8 @@
                     </div>
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="{{url("/")}}" class="active">Home</a></li>
-                            <li><a href="{{url("/products")}}">Shop</a>
+                            <li><a href="{{url("/")}}" {{$title == "Home"?'class=active':""}}>Home</a></li>
+                            <li><a href='{{url("/products")}}' {{$title == "Products"?'class=active':""}}>Shop</a>
                             {{--<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>--}}
                                 {{--<ul role="menu" class="sub-menu">--}}
                                     {{--<li><a href="{{url("/products")}}">Products</a></li>--}}
@@ -124,7 +124,7 @@
                                     {{--<li><a href="login.html">Login</a></li>--}}
                                 {{--</ul>--}}
                             </li>
-                            <li><a href="{{url("/blog")}}">Blog</a></li>
+                            <li><a href="{{url("/blog")}}" {{$title == "Blog"?'class=active':""}}>Blog</a></li>
                             {{--<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>--}}
                                 {{--<ul role="menu" class="sub-menu">--}}
                                     {{--<li><a href="blog.html">Blog List</a></li>--}}
@@ -132,7 +132,7 @@
                                 {{--</ul>--}}
                             {{--</li>--}}
                             {{--<li><a href="404.html">404</a></li>--}}
-                            <li><a href="{{url("/contact_us")}}">Contact</a></li>
+                            <li><a href="{{url("/contact_us")}}" {{$title == "Contact_Us"?'class=active':""}}>Contact</a></li>
                         </ul>
                     </div>
                 </div>
