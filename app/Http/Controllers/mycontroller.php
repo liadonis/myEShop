@@ -33,9 +33,9 @@ class mycontroller extends Controller
         return view("products",["title" => "Products"]);
     }
 
-    public function products_category()
+    public function products_detail($id)
     {
-        return view("products_category",["title" => "Products_Category"]);
+        return view("products_detail_$id",["title" => "Products_Detail_$id"]);
     }
 
     public function blog()
@@ -45,7 +45,7 @@ class mycontroller extends Controller
 
     public function blog_post($id)
     {
-        return "blog_post $id";
+        return view("blog_single_$id",["title" => "Blog_Single_$id"]);
     }
 
     public function blog_single()

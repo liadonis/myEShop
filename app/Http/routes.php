@@ -25,7 +25,7 @@ Route::get('/logout', "mycontroller@logout");
 
 Route::get('/products', "mycontroller@products");
 
-Route::get('/products/category', "mycontroller@products_category");
+Route::get('/products/detail/{id}', "mycontroller@products_detail");
 
 Route::get('/products/brands', "mycontroller@brands");
 

@@ -100,6 +100,8 @@
                                             <p>Easy Polo Black Edition</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i
                                                         class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <a href="{{url("products/detail/1")}}" class="btn btn-default add-to-cart"><i
+                                                        class="fa fa-info"></i>Product Detail</a>
                                         </div>
                                     </div>
                                 </div>
@@ -127,6 +129,8 @@
                                             <p>Easy Polo Black Edition</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i
                                                         class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <a href="{{url("products/detail/2")}}" class="btn btn-default add-to-cart"><i
+                                                        class="fa fa-info"></i>Product Detail</a>
                                         </div>
                                     </div>
                                 </div>
@@ -154,6 +158,8 @@
                                             <p>Easy Polo Black Edition</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i
                                                         class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <a href="{{url("products/detail/3")}}" class="btn btn-default add-to-cart"><i
+                                                        class="fa fa-info"></i>Product Detail</a>
                                         </div>
                                     </div>
                                 </div>
@@ -181,6 +187,8 @@
                                             <p>Easy Polo Black Edition</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i
                                                         class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <a href="{{url("products/detail/4")}}" class="btn btn-default add-to-cart"><i
+                                                        class="fa fa-info"></i>Product Detail</a>
                                         </div>
                                     </div>
                                     <img src="images/home/new.png" class="new" alt=""/>
@@ -209,6 +217,8 @@
                                             <p>Easy Polo Black Edition</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i
                                                         class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <a href="{{url("products/detail/5")}}" class="btn btn-default add-to-cart"><i
+                                                        class="fa fa-info"></i>Product Detail</a>
                                         </div>
                                     </div>
                                     <img src="images/home/sale.png" class="new" alt=""/>
@@ -237,6 +247,8 @@
                                             <p>Easy Polo Black Edition</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i
                                                         class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <a href="{{url("products/detail/6")}}" class="btn btn-default add-to-cart"><i
+                                                        class="fa fa-info"></i>Product Detail</a>
                                         </div>
                                     </div>
                                 </div>
