@@ -11,12 +11,13 @@ class CreateCategoriesTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {   
+        
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('cate_id');
+            $table->string("cate_name",60);
             $table->string('created_at_ip');
             $table->string('updated_at_ip');
-            $table->string("cate_name",60);
             $table->timestamps();
         });
     }
