@@ -42,3 +42,56 @@ Route::get('/cart', "mycontroller@cart");
 Route::get('/checkout', "mycontroller@checkout");
 
 Route::get('/account', "mycontroller@checkout");
+
+
+Route::get('/test/write',function (){
+    $product = new \App\Product();
+
+//    $product->pro_name = "testhello~~~~~~~~";
+//    $product->pro_title = "testhello~~~~";
+//    $product->pro_detail = "testhello~~~~";
+//    $product->pro_price = 1;
+//    $product->cate_id = 1;
+//    $product->brand_id = 1;
+//    $product->created_at_ip = "testhello~~~~";
+//    $product->updated_at_ip = "testhello~~~~";
+//    $product->save();
+
+    $product->create(["pro_name"=>"batch-asign5","pro_title"=>"batch_title"]); //以陣列的方式傳入資料庫,必須在Model做設定
+
+//    $product = new \App\Product();
+//
+//    $product->create(["cate_name"=>"batch-asign5"]); 
+
+    return redirect('/test/read');
+});
+
+Route::get('/test/read',function (){
+    $product = new \App\Product();
+
+    $product_datas = $product->all();
+
+    foreach ($product_datas as $product_data){
+        echo "$product_data->id,$product_data->pro_name,$product_data->pro_title </br></br>";
+    }
+
+});
+
+Route::get('/test/update/{id}',function ($id){
+
+    $product = \App\Product::find($id); //find括號中找的是id值
+    $product->pro_name = "更新測試2";
+    $product->save();
+
+    return redirect('/test/read');
+
+});
+
+Route::get('/test/delete/{id}',function ($id){
+
+    $product = \App\Product::find($id);
+    $product->delete();
+
+    return redirect('/test/read');
+
+});

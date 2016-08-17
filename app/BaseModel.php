@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BaseModel extends Model
 {
+
     public function selectQuery($sql_select)
     {
         return DB::select($sql_select);

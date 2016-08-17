@@ -10,6 +10,11 @@ class mycontroller extends Controller
 {
     public function index()
     {
+//        $product = new \App\Product();
+//        $product->pro_name = "testHello~~"; //因為建立資料表的時候pro_name設定為unique 所以名稱重複會出錯
+//        $product->save();
+
+
         return view("home",["title" => "Home"]);
     }
 
