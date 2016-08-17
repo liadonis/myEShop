@@ -29,15 +29,17 @@ class mycontroller extends Controller
     public function index()
     {
         //=======================查找mysql資料測試=====================
-        $pro_name = "上衣-45378911";
-        $result = DB::table('products')->select('pro_name')->where('pro_name', $pro_name)->first();
+//        $pro_name = "上衣-45378911";
+//        $result = DB::table('products')->select('pro_name')->where('pro_name', $pro_name)->first();
 //        dd($result);
 //        return $result->pro_name;
         //===========================================================
 
 
 
-        return view("home",["title" => "Home", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ]);
+
+
+        return view("home",["title" => "Home", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡"]);
     }
 
     public function contact_us()
