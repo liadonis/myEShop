@@ -12,9 +12,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         //這一行會在寫入資料前先清空資料表(id從頭開始計算)
-        DB::table("products")->truncate();
-        DB::table("categories")->truncate();
-        DB::table("brands")->truncate();
+//        DB::table("products")->truncate();
+//        DB::table("categories")->truncate();
+//        DB::table("brands")->truncate();
 
 
         // $this->call(UsersTableSeeder::class);

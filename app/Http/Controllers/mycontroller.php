@@ -6,7 +6,7 @@ use App\Brand;
 use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
-
+use ShoppingCart;                   //use ShoppingCart
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 
@@ -89,9 +89,21 @@ class mycontroller extends Controller
         return view("cart",["title" => "Cart", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡"]);
     }
 
-    public function cart_add()
+    public function cart_add(Request $request)
     {
-        return "cart_add";
+        $product_id = $request->get("product_id");
+        $product = Product::find($product_id);
+
+        ShoppingCart::add([
+            "id" => $product->id,
+            "name" => $product->pro_name,
+            "qty" => 1,
+            "price" => $product->pro_price,
+        ]);
+
+        $cart = ShoppingCart::content();
+
+        return view("cart",["title" => "Cart","description" => "SOE 網頁搜尋優化的文章放這裡","cart" => $cart,]);
     }
 
     public function checkout()

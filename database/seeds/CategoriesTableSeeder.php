@@ -14,10 +14,13 @@ class CategoriesTableSeeder extends Seeder
         $faker = Faker\Factory::create("zh_TW");
         $name = ["褲子","上衣","帽子"];
 
-        for ($i = 0; $i < 20 ; $i++){
+        for ($i = 0; $i < 3 ; $i++){
+
+//            $no = $faker->ean8;
+
             DB::table("categories")->insert(
                 [
-                    "cate_name" => $name[$i],
+                    "cate_name" => "$name[$i]",
                     "created_at_ip" => $faker->ipv4,
                     "updated_at_ip" => $faker->ipv4,
                     "created_at" => $faker->date('Y-m-d','now'),
