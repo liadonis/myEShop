@@ -15,6 +15,8 @@
 //    return view('welcome');
 //});
 
+use \App\Product as P; //指定路徑並且取別名
+
 Route::get('/', "mycontroller@index");
 
 Route::get('/contact_us', "mycontroller@contact_us");
@@ -45,8 +47,8 @@ Route::get('/account', "mycontroller@checkout");
 
 
 Route::get('/test/write',function (){
-    $product = new \App\Product();
 
+//      $product = new \App\Product();
 //    $product->pro_name = "testhello~~~~~~~~";
 //    $product->pro_title = "testhello~~~~";
 //    $product->pro_detail = "testhello~~~~";
@@ -57,12 +59,16 @@ Route::get('/test/write',function (){
 //    $product->updated_at_ip = "testhello~~~~";
 //    $product->save();
 
+    $product = new P();
+
     $product->create(["pro_name"=>"batch-asign5","pro_title"=>"batch_title"]); //以陣列的方式傳入資料庫,必須在Model做設定
 
+//    //=============測試寫入其他table==============
 //    $product = new \App\Product();
-//
-//    $product->create(["cate_name"=>"batch-asign5"]); 
-
+//    $product->create(["cate_name"=>"batch-asign5"]);
+//    //==========================================
+    
+    
     return redirect('/test/read');
 });
 
