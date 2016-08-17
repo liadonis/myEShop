@@ -2,20 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
+use App\Category;
+use App\Product;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
 class mycontroller extends Controller
 {
+    var $products;
+    var $categories;
+    var $brands;
+
+    public function __construct() //建構子，程式一開始就會自己執行
+    {
+        $this->products = Product::all(["id","pro_name","pro_price"]);
+        $this->categories = Category::all(["cate_name"]);
+        $this->brands = Brand::all(["brand_name"]);
+    }
+
     public function index()
     {
-//        $product = new \App\Product();
-//        $product->pro_name = "testHello~~"; //因為建立資料表的時候pro_name設定為unique 所以名稱重複會出錯
-//        $product->save();
 
 
-        return view("home",["title" => "Home"]);
+        return view("home",["title" => "Home", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands]);
     }
 
     public function contact_us()

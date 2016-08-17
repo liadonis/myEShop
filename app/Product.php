@@ -13,7 +13,7 @@ class Product extends BaseModel
 
 //    protected $timestamps = false; //取消系統預設的寫入新增及更新時間
 
-//    protected $fillable = ["pro_name","pro_title"]; //若routes使用create方式寫入資料要在這裡加上這一行,有寫的才會寫入
+    protected $fillable = ["pro_name","pro_title","pro_detail","pro_price","cate_id","brand_id","created_at_ip","updated_at_ip"]; //若routes使用create方式寫入資料要在這裡加上這一行,有寫的才會寫入
 
 
 //    //=============測試寫入其他table==============
