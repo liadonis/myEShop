@@ -14,7 +14,7 @@ class CategoriesTableSeeder extends Seeder
         $faker = Faker\Factory::create("zh_TW");
         $name = ["褲子","上衣","帽子"];
 
-        for ($i = 0; $i < 3 ; $i++){
+        for ($i = 0; $i < 20 ; $i++){
             DB::table("categories")->insert(
                 [
                     "cate_name" => $name[$i],

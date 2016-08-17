@@ -14,7 +14,7 @@ class BrandsTableSeeder extends Seeder
         $faker = Faker\Factory::create("zh_TW");
         $name = ["Nike","Adidas","K-swiss"];
 
-        for ($i = 0; $i < 3 ;$i++){
+        for ($i = 0; $i < 20 ;$i++){
             DB::table("brands")->insert(
                 [
                     "brand_name" => $name[$i],

@@ -41,9 +41,15 @@ Route::get('/search/{key_word}', "mycontroller@search");
 
 Route::get('/cart', "mycontroller@cart");
 
+//Route::post('/cart', "mycontroller@cart");
+
+Route::post('/cart/add' ,"mycontroller@cart_add");
+
 Route::get('/checkout', "mycontroller@checkout");
 
 Route::get('/account', "mycontroller@checkout");
+
+
 
 
 Route::get('/test/write',function (){

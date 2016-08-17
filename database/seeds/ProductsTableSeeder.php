@@ -15,7 +15,7 @@ class ProductsTableSeeder extends Seeder
         $name = ["牛仔褲","上衣","帽子"];
         $price = [299,399,499,599,699,799,899,999];
 
-        for ($i = 0 ; $i < 5 ; $i++)
+        for ($i = 0 ; $i < 20 ; $i++)
         {
             $no = $fake->ean8;
             $pro_name = $name[$fake->numberBetween(0,2)];
