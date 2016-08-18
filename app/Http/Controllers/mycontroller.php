@@ -108,20 +108,39 @@ class mycontroller extends Controller
         if (Request::get('product_id') && Request::get('add') == 1 ){
             $items = Cart::Search(function ($cartItem,$rowId){ return $cartItem->id == Request::get("product_id"); });
             Cart::update($items->first()->rowId,$items->first()->qty +1);//使用集合的方式撈資料
+
+            return Redirect::to("cart");//加上這一行，執行後網頁標題列才不會出現  cart?product_id=1&amp;add=1
         }
 
         //執行商品數量減少
         if (Request::get('product_id') && Request::get('minus') == 1 ){
             $items = Cart::Search(function ($cartItem,$rowId){ return $cartItem->id == Request::get("product_id"); });
             Cart::update($items->first()->rowId,$items->first()->qty -1);
+
+            return Redirect::to("cart");
         }
 
+        //執行單項商品刪除
+        if (Request::get('product_id') && Request::get('clear') == 1 ){
+            $items = Cart::Search(function ($cartItem,$rowId){ return $cartItem->id == Request::get("product_id"); });
+            Cart::remove($items->first()->rowId);
+
+            return Redirect::to("cart");
+        }
 
         $cart = Cart::content();
         $cartItemTotal = Cart::content()->count(); //因為使用建構子會有延遲讀取的情況所以在cart方法中讀取自己的 $cartItemTotal
 
 
+
         return view("cart",["title" => "Cart","cart" => $cart,"cartItemTotal" => $cartItemTotal, "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡"]);
+    }
+
+    public function cart_clear()
+    {
+        Cart::destroy();
+
+        return Redirect::to('cart');
     }
 
 

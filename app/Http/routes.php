@@ -43,6 +43,8 @@ Route::get('/cart', "mycontroller@cart");
 
 Route::post('/cart', "mycontroller@cart");
 
+Route::get('/cart/cart_clear','mycontroller@cart_clear');
+
 //Route::post('/cart/add' ,"mycontroller@cart_add");
 
 Route::get('/checkout', "mycontroller@checkout");
