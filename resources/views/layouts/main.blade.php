@@ -89,7 +89,7 @@
                             <li><a href="{{url("account")}}"><i class="fa fa-user"></i> Account</a></li>
                             {{--<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>--}}
                             <li><a href="{{url("checkout")}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                            <li><a href="{{url("cart")}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                            <li><a href="{{url("cart")}}"><i class="fa fa-shopping-cart"></i> Cart <span class="ItemTotal" style="color:#f0a ">{{"($cartItemTotal)"}}</span></a></li>
                             <li><a href="{{url("login")}}"><i class="fa fa-lock"></i> Login</a></li>
                         </ul>
                     </div>

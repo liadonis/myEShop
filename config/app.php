@@ -207,7 +207,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         //Shopping Cart
-        "ShoppingCart" => Gloudemans\Shoppingcart\Facades\Cart::class,
+        "Cart" => Gloudemans\Shoppingcart\Facades\Cart::class,
     ],
 
 ];

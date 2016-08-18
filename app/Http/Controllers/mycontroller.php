@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Brand;
 use App\Category;
 use App\Product;
+use Gloudemans\Shoppingcart\Facades\Cart;  //use ShoppingCart
 use Illuminate\Http\Request;
-use ShoppingCart;                   //use ShoppingCart
+use Illuminate\Support\Facades\Redirect;  //use ShoppingCart
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 
@@ -84,9 +85,20 @@ class mycontroller extends Controller
         return "search $key_word";
     }
 
-    public function cart()
+    public function cart(Request $request) //方法2.使用靜態方法要加上Request $request
     {
-        return view("cart",["title" => "Cart", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡"]);
+        //方法1.
+//        //當cart_add()將變數丟過來要對flush作判斷，並賦值否則會找不到值
+//        if (session()->has('cart_from_server')){
+//            $cart = session('cart_from_server');
+//        }
+
+        //方法2.使用靜態方法呼叫Cart
+
+        $cart =  Cart::content();
+        $cartItemTotal = Cart::content()->count();
+
+        return view("cart",["title" => "Cart","cart" => $cart,"cartItemTotal" => $cartItemTotal, "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡"]);
     }
 
     public function cart_add(Request $request)
@@ -94,16 +106,19 @@ class mycontroller extends Controller
         $product_id = $request->get("product_id");
         $product = Product::find($product_id);
 
-        ShoppingCart::add([
+        Cart::add([
             "id" => $product->id,
             "name" => $product->pro_name,
             "qty" => 1,
             "price" => $product->pro_price,
         ]);
 
-        $cart = ShoppingCart::content();
+//                              //方法1. "cart_from_server" => $cart 這裡的命名不可以相同否則系統會視作每次點入都是獨立的，不會將購物車作累加
+//        return Redirect::to("cart")->with(["cart_from_server" => $cart,,"title" => "Cart","description" => "SOE 網頁搜尋優化的文章放這裡" ]);
 
-        return view("cart",["title" => "Cart","description" => "SOE 網頁搜尋優化的文章放這裡","cart" => $cart,]);
+        //方法2.使用靜態方法呼叫Cart
+        return Redirect::to("cart")->with(["title" => "Cart","description" => "SOE 網頁搜尋優化的文章放這裡" ]);
+
     }
 
     public function checkout()
