@@ -6,7 +6,8 @@ use App\Brand;
 use App\Category;
 use App\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;  //use ShoppingCart
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
+use Request;  //此種靜態方法在這個頁面都呼叫的到
 use Illuminate\Support\Facades\Redirect;  //use ShoppingCart
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
@@ -90,12 +91,31 @@ class mycontroller extends Controller
     //使用 post 到 /cart 的程式碼
     public function cart(Request $request)
     {
-        //update/ add new item to cart
-        if ($request->isMethod('post')) {
-            $product_id = $request->get('product_id');
+//        //update/ add new item to cart   使用use Illuminate\Http\Request; 要用這邊的程式
+//        if ($request->isMethod('post')) {
+//            $product_id = $request->get('product_id');
+//            $product = Product::find($product_id);
+//            Cart::add(['id' => $product_id, 'name' => $product->pro_name, 'qty' => 1, 'price' => $product->pro_price]);
+//        }
+
+        if (Request::isMethod('post')){
+            $product_id = Request::get('product_id');
             $product = Product::find($product_id);
             Cart::add(['id' => $product_id, 'name' => $product->pro_name, 'qty' => 1, 'price' => $product->pro_price]);
         }
+        //官網  https://packagist.org/packages/gloudemans/shoppingcart
+        //執行商品數量增加
+        if (Request::get('product_id') && Request::get('add') == 1 ){
+            $items = Cart::Search(function ($cartItem,$rowId){ return $cartItem->id == Request::get("product_id"); });
+            Cart::update($items->first()->rowId,$items->first()->qty +1);//使用集合的方式撈資料
+        }
+
+        //執行商品數量減少
+        if (Request::get('product_id') && Request::get('minus') == 1 ){
+            $items = Cart::Search(function ($cartItem,$rowId){ return $cartItem->id == Request::get("product_id"); });
+            Cart::update($items->first()->rowId,$items->first()->qty -1);
+        }
+
 
         $cart = Cart::content();
         $cartItemTotal = Cart::content()->count(); //因為使用建構子會有延遲讀取的情況所以在cart方法中讀取自己的 $cartItemTotal
