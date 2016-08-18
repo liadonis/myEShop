@@ -26,7 +26,7 @@ class mycontroller extends Controller
         $this->brands = Brand::all(["brand_name"]);
         $this->category1 = Category::all()->get(0); //顯示單筆資料get()中的數值是索引值
         $this->cartItemTotal = Cart::content()->count();
-        
+
     }
 
     public function index()
@@ -98,9 +98,10 @@ class mycontroller extends Controller
         }
 
         $cart = Cart::content();
+        $cartItemTotal = Cart::content()->count(); //因為使用建構子會有延遲讀取的情況所以在cart方法中讀取自己的 $cartItemTotal
 
 
-        return view("cart",["title" => "Cart","cart" => $cart,"cartItemTotal" => $this->cartItemTotal, "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡"]);
+        return view("cart",["title" => "Cart","cart" => $cart,"cartItemTotal" => $cartItemTotal, "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡"]);
     }
 
 
