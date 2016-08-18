@@ -22,4 +22,9 @@ Route::get('/', function () {
 
 Route::get('/index', 'myResourceController@index');
 
+
 Route::get('/show/{name_from_client}', 'myResourceController@show');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
