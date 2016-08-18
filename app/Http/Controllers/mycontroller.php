@@ -17,6 +17,7 @@ class mycontroller extends Controller
     var $categories;
     var $brands;
     var $category1;
+    var $cartItemTotal;
 
     public function __construct() //建構子，程式一開始就會自己執行
     {
@@ -24,6 +25,7 @@ class mycontroller extends Controller
         $this->categories = Category::all(["cate_name"]); //Category 是Model的名稱
         $this->brands = Brand::all(["brand_name"]);
         $this->category1 = Category::all()->get(0); //顯示單筆資料get()中的數值是索引值
+        $this->cartItemTotal = Cart::content()->count();
 
     }
 
@@ -37,17 +39,17 @@ class mycontroller extends Controller
         //===========================================================
 
 
-        return view("home",["title" => "Home", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡"]);
+        return view("home",["title" => "Home", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡","cartItemTotal" => $this->cartItemTotal]);
     }
 
     public function contact_us()
     {
-        return view("contact_us",["title" => "Contact_Us", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡"]);
+        return view("contact_us",["title" => "Contact_Us", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡","cartItemTotal" => $this->cartItemTotal]);
     }
 
     public function login()
     {
-        return view("login",["title" => "Login", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡"]);
+        return view("login",["title" => "Login", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡","cartItemTotal" => $this->cartItemTotal]);
     }
 
     public function logout()
@@ -57,27 +59,27 @@ class mycontroller extends Controller
 
     public function products()
     {
-        return view("products",["title" => "Products", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡"]);
+        return view("products",["title" => "Products", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡","cartItemTotal" => $this->cartItemTotal]);
     }
 
     public function products_detail($id)
     {
-        return view("products_detail_$id",["title" => "Products_Detail_$id", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡"]);
+        return view("products_detail_$id",["title" => "Products_Detail_$id", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡","cartItemTotal" => $this->cartItemTotal]);
     }
 
     public function blog()
     {
-        return view("blog",["title" => "Blog", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡"]);
+        return view("blog",["title" => "Blog", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡","cartItemTotal" => $this->cartItemTotal]);
     }
 
     public function blog_post($id)
     {
-        return view("blog_single_$id",["title" => "Blog_Single_$id", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡"]);
+        return view("blog_single_$id",["title" => "Blog_Single_$id", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡","cartItemTotal" => $this->cartItemTotal]);
     }
 
     public function blog_single()
     {
-        return view("blog_single",["title" => "Blog_Single", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡"]);
+        return view("blog_single",["title" => "Blog_Single", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡","cartItemTotal" => $this->cartItemTotal]);
     }
 
     public function search($key_word)
@@ -96,10 +98,13 @@ class mycontroller extends Controller
         //方法2.使用靜態方法呼叫Cart
 
         $cart =  Cart::content();
-        $cartItemTotal = Cart::content()->count();
 
-        return view("cart",["title" => "Cart","cart" => $cart,"cartItemTotal" => $cartItemTotal, "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡"]);
+
+        return view("cart",["title" => "Cart","cart" => $cart,"cartItemTotal" => $this->cartItemTotal, "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡"]);
     }
+
+
+
 
     public function cart_add(Request $request)
     {
@@ -123,7 +128,7 @@ class mycontroller extends Controller
 
     public function checkout()
     {
-        return view("checkout",["title" => "Checkout", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡"]);
+        return view("checkout",["title" => "Checkout", "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡","cartItemTotal" => $this->cartItemTotal]);
     }
 
     public function account()
