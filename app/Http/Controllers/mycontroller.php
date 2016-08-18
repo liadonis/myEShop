@@ -26,7 +26,7 @@ class mycontroller extends Controller
         $this->brands = Brand::all(["brand_name"]);
         $this->category1 = Category::all()->get(0); //顯示單筆資料get()中的數值是索引值
         $this->cartItemTotal = Cart::content()->count();
-
+        
     }
 
     public function index()
@@ -87,44 +87,58 @@ class mycontroller extends Controller
         return "search $key_word";
     }
 
-    public function cart(Request $request) //方法2.使用靜態方法要加上Request $request
+    //使用 post 到 /cart 的程式碼
+    public function cart(Request $request)
     {
-        //方法1.
-//        //當cart_add()將變數丟過來要對flush作判斷，並賦值否則會找不到值
-//        if (session()->has('cart_from_server')){
-//            $cart = session('cart_from_server');
-//        }
+        //update/ add new item to cart
+        if ($request->isMethod('post')) {
+            $product_id = $request->get('product_id');
+            $product = Product::find($product_id);
+            Cart::add(['id' => $product_id, 'name' => $product->pro_name, 'qty' => 1, 'price' => $product->pro_price]);
+        }
 
-        //方法2.使用靜態方法呼叫Cart
-
-        $cart =  Cart::content();
+        $cart = Cart::content();
 
 
         return view("cart",["title" => "Cart","cart" => $cart,"cartItemTotal" => $this->cartItemTotal, "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡"]);
     }
 
 
-
-
-    public function cart_add(Request $request)
-    {
-        $product_id = $request->get("product_id");
-        $product = Product::find($product_id);
-
-        Cart::add([
-            "id" => $product->id,
-            "name" => $product->pro_name,
-            "qty" => 1,
-            "price" => $product->pro_price,
-        ]);
-
-//                              //方法1. "cart_from_server" => $cart 這裡的命名不可以相同否則系統會視作每次點入都是獨立的，不會將購物車作累加
-//        return Redirect::to("cart")->with(["cart_from_server" => $cart,,"title" => "Cart","description" => "SOE 網頁搜尋優化的文章放這裡" ]);
-
-        //方法2.使用靜態方法呼叫Cart
-        return Redirect::to("cart")->with(["title" => "Cart","description" => "SOE 網頁搜尋優化的文章放這裡" ]);
-
-    }
+//    public function cart(Request $request) //方法2.使用靜態方法要加上Request $request
+//    {
+//        //方法1.
+////        //當cart_add()將變數丟過來要對flush作判斷，並賦值否則會找不到值
+////        if (session()->has('cart_from_server')){
+////            $cart = session('cart_from_server');
+////        }
+//
+//        //方法2.使用靜態方法呼叫Cart
+//
+//        $cart =  Cart::content();
+//
+//
+//        return view("cart",["title" => "Cart","cart" => $cart,"cartItemTotal" => $this->cartItemTotal, "products" => $this->products,"categories" => $this->categories, "brands" => $this->brands ,"category1" => $this->category1 ,"description" => "SOE 網頁搜尋優化的文章放這裡"]);
+//    }
+//
+//    public function cart_add(Request $request)
+//    {
+//        $product_id = $request->get("product_id");
+//        $product = Product::find($product_id);
+//
+//        Cart::add([
+//            "id" => $product->id,
+//            "name" => $product->pro_name,
+//            "qty" => 1,
+//            "price" => $product->pro_price,
+//        ]);
+//
+////                              //方法1. "cart_from_server" => $cart 這裡的命名不可以相同否則系統會視作每次點入都是獨立的，不會將購物車作累加
+////        return Redirect::to("cart")->with(["cart_from_server" => $cart,,"title" => "Cart","description" => "SOE 網頁搜尋優化的文章放這裡" ]);
+//
+//        //方法2.使用靜態方法呼叫Cart
+//        return Redirect::to("cart")->with(["title" => "Cart","description" => "SOE 網頁搜尋優化的文章放這裡" ]);
+//
+//    }
 
     public function checkout()
     {
