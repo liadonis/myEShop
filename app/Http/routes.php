@@ -59,6 +59,10 @@ Route::post('/auth/login',"mycontroller@auth_login");
 
 Route::get('/auth/logout',"mycontroller@auth_logout");
 
+Route::get('/fb_redirect',"mycontroller@fb_redirect");
+
+Route::get('/fb_callback',"mycontroller@fb_callback");
+
 
 
 

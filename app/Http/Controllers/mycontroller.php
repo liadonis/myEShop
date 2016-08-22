@@ -13,6 +13,8 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use Auth;
 //use Illuminate\Support\Facades\Auth;
+use Socialite;
+//use Laravel\Socialite\Facades\Socialite;
 
 class mycontroller extends Controller
 {
@@ -236,6 +238,16 @@ class mycontroller extends Controller
         Auth::logout();
 
         return redirect()->to("/");
+    }
+
+    public function fb_redirect()
+    {
+        return Socialite::driver("facebook")->redirect();
+    }
+
+    public function fb_callback()
+    {
+        return "I'm comeback";
     }
 
 }

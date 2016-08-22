@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => '245001015896904',
+        'client_secret' => '63af56bbdd4963c0ab6c3b8597ccea4a',
+        'redirect' => 'http://localhost:8082/AdoLaravel/public/fb_callback',
+    ],
+
 ];
