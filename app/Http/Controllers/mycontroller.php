@@ -11,6 +11,8 @@ use Request;  //此種靜態方法在這個頁面都呼叫的到
 use Illuminate\Support\Facades\Redirect;  //use ShoppingCart
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
+use Auth;
+//use Illuminate\Support\Facades\Auth;
 
 class mycontroller extends Controller
 {
@@ -188,6 +190,38 @@ class mycontroller extends Controller
     public function account()
     {
         return "account";
+    }
+
+    public function register()
+    {
+        if (Request::isMethod('post')){
+            \App\User::create([
+                'name' => Request::get('name'),
+                'email' => Request::get('email'),
+                'password' => bcrypt(Request::get('password')),
+            ]);
+        }
+
+        return redirect()->to('login');
+
+    }
+
+    public function auth_login()
+    {
+                //attempt 嘗試加入
+        if (Auth::attempt(["email" => Request::get("email"),"password" => Request::get("password")]))
+        {
+            return redirect()->to("/");
+        }else{
+            return redirect()->to("/login");
+        }
+    }
+
+    public function auth_logout()
+    {
+        Auth::logout();
+
+        return redirect()->to("/");
     }
 
 }

@@ -51,6 +51,12 @@ Route::get('/checkout', "mycontroller@checkout");
 
 Route::get('/account', "mycontroller@checkout");
 
+Route::post('/register', "mycontroller@register");
+
+Route::post('/auth/login',"mycontroller@auth_login");
+
+Route::get('/auth/logout',"mycontroller@auth_logout");
+
 
 
 
