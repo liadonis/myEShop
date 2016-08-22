@@ -208,12 +208,13 @@ class mycontroller extends Controller
 
     public function auth_login()
     {
-                //attempt 嘗試加入
+                   //attempt 嘗試加入  確認這些條件是否符合
         $check_auth = Auth::attempt(["email" => Request::get("email"),"password" => Request::get("password")]);
+
 
         if ($check_auth && $this->cartItemTotal > 0)
         {
-            return redirect()->to("/checkout");
+            return redirect()->to("/checkout");//購物車有東西的時候導入結帳畫面
         }elseif($check_auth){
             return redirect()->to("/");
         }else{

@@ -50,7 +50,7 @@ Route::get('/cart/cart_clear','mycontroller@cart_clear');
 Route::get('/account', "mycontroller@checkout");
 
 
-
+//用中間層檢查是否已登入,登入才能進 checkout 頁面，否則會到 login 頁面
 Route::get('/checkout', ["middleware" => "auth" , "uses" => "mycontroller@checkout"]);
 
 Route::post('/register', "mycontroller@register");
