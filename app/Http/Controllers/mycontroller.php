@@ -130,6 +130,15 @@ class mycontroller extends Controller
             return Redirect::to("cart");
         }
 
+        //執行手動輸入更改商品數量  還少一個對輸入0的判斷
+        if (Request::get('product_id') && Request::get('qty') > 0 ){
+            $input_value = Request::get('qty');
+            $items = Cart::Search(function ($cartItem,$rowId){ return $cartItem->id == Request::get("product_id"); });
+            Cart::update($items->first()->rowId,$items->first()->qty = $input_value);
+
+            return Redirect::to("cart");
+        }
+
         $cart = Cart::content();
         $cartItemTotal = Cart::content()->count(); //因為使用建構子會有延遲讀取的情況所以在cart方法中讀取自己的 $cartItemTotal
 

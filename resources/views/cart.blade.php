@@ -39,7 +39,10 @@
                         <td class="cart_quantity">
                             <div class="cart_quantity_button">
                                 <a class="cart_quantity_up" href="{{url("cart?product_id=$item->id&add=1")}}"> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="{{$item->qty}}" autocomplete="off" size="2">
+                                <form method="get" action="{{url("cart")}}">
+                                <input class="cart_quantity_input" type="qty" name="qty" value="{{$item->qty}}" autocomplete="off" size="2">
+                                <input class="cart_quantity_input" type="hidden" name="product_id" value="{{$item->id}}" >
+                                </form>
                                 <a class="cart_quantity_down" href="{{url("cart?product_id=$item->id&minus=1")}}"> - </a>
                             </div>
                         </td>
