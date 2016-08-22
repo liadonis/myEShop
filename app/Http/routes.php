@@ -47,9 +47,11 @@ Route::get('/cart/cart_clear','mycontroller@cart_clear');
 
 //Route::post('/cart/add' ,"mycontroller@cart_add");
 
-Route::get('/checkout', "mycontroller@checkout");
-
 Route::get('/account', "mycontroller@checkout");
+
+
+
+Route::get('/checkout', ["middleware" => "auth" , "uses" => "mycontroller@checkout"]);
 
 Route::post('/register', "mycontroller@register");
 

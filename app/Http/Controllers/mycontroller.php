@@ -209,8 +209,12 @@ class mycontroller extends Controller
     public function auth_login()
     {
                 //attempt 嘗試加入
-        if (Auth::attempt(["email" => Request::get("email"),"password" => Request::get("password")]))
+        $check_auth = Auth::attempt(["email" => Request::get("email"),"password" => Request::get("password")]);
+
+        if ($check_auth && $this->cartItemTotal > 0)
         {
+            return redirect()->to("/checkout");
+        }elseif($check_auth){
             return redirect()->to("/");
         }else{
             return redirect()->to("/login");
