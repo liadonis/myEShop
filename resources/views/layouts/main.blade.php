@@ -6,6 +6,7 @@
     <meta name="description" content="{{$description}}">
     <meta name="author" content="{{$description}}">
     <title>{{$title}} | E-Shopper</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{asset("css/bootstrap.min.css")}}" rel="stylesheet">
     <link href="{{asset("css/font-awesome.min.css")}}" rel="stylesheet">
     <link href="{{asset("css/prettyPhoto.css")}}" rel="stylesheet">
@@ -22,6 +23,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset("images/ico/apple-touch-icon-114-precomposed.png")}}">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset("images/ico/apple-touch-icon-72-precomposed.png")}}">
     <link rel="apple-touch-icon-precomposed" href="{{asset("images/ico/apple-touch-icon-57-precomposed.png")}}">
+
 </head><!--/head-->
 
 <body>
@@ -45,6 +47,7 @@
                             <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                             <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
                             <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="https://www.facebook.com/sharer/sharer.php?u={{url("")}}" target="_blank" ><i class="fa fa-fa-facebook-official"></i>FB</a></li>
                         </ul>
                     </div>
                 </div>
