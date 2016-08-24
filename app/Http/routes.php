@@ -83,6 +83,44 @@ Route::get('/fb_callback',"mycontroller@fb_callback");
 
 
 
+
+Route::group([
+    'prefix'    => 'allpay'],
+    function () {
+//        Route::get('/', 'mycontroller@index1');
+        Route::get('/checkoutAllpay', 'mycontroller@checkoutAllpay');
+    }
+);
+
+//
+//
+//Route::group([
+////    'namespace' => 'namespace App\Http\Controllers',
+//    'prefix'    => 'allpay_demo_201608'],
+//    function () {
+//        Route::get('/', 'mycontroller@index1');
+//        Route::get('/checkoutAllpay', 'mycontroller@checkoutAllpay');
+//    }
+//);
+
+
+
+
+////測試demo
+//Route::group([
+//    'namespace' => 'ScottChayaa\Allpay\Controllers',
+//    'prefix'    => 'allpay_demo_201608'],
+//    function () {
+//        Route::get('/', 'DemoController@index1');
+//        Route::get('/checkout', 'DemoController@checkout1');
+//    }
+//);
+
+
+
+
+
+//=====================TEST================================
 Route::get('/test/write',function (){
 
 //      $product = new \App\Product();

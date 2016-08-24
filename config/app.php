@@ -163,6 +163,9 @@ return [
         //Facebook
         Laravel\Socialite\SocialiteServiceProvider::class,
 
+        //歐付寶
+        ScottChayaa\Allpay\AllpayServiceProvider::class,
+
     ],
 
     /*
@@ -214,6 +217,10 @@ return [
 
         //Facebook
         "Socialite" => Laravel\Socialite\Facades\Socialite::class,
+
+        //歐付寶
+        'Allpay' => ScottChayaa\Allpay\Facade\Allpay::class,
+
     ],
 
 ];
