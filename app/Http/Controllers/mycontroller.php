@@ -15,6 +15,8 @@ use Auth;
 //use Illuminate\Support\Facades\Auth;
 use Socialite;
 //use Laravel\Socialite\Facades\Socialite;
+use App\SocialiteUserService;
+
 
 class mycontroller extends Controller
 {
@@ -245,9 +247,39 @@ class mycontroller extends Controller
         return Socialite::driver("facebook")->redirect();
     }
 
-    public function fb_callback()
+
+   
+////    public function fb_callback()
+//    {
+////        return "123";
+//
+//        $vendor_user = Socialite::driver("facebook")->user();
+////
+//        return "$vendor_user->id, $vendor_user->nickname, $vendor_user->name, $vendor_user->email, $vendor_user->avatar";
+//
+////        $user = $socialiteUserService->checkUser(Socialite::driver("facebook")->user());
+////
+////        Auth::login($user);
+////
+////        return redirect()->to("/");
+//    }
+
+    public function fb_callback(SocialiteUserService $socialiteUserService)
     {
-        return "I'm comeback";
+
+        //這一段是測試用==================
+//        $vendor_user = Socialite::driver("facebook")->user();
+//
+//        return "$vendor_user->id, $vendor_user->nickname, $vendor_user->name, $vendor_user->email, $vendor_user->avatar";
+        //============================
+
+
+        $user = $socialiteUserService->checkUser(Socialite::driver("facebook")->user());
+
+        Auth::login($user);
+
+        return redirect()->to("/");
     }
+
 
 }

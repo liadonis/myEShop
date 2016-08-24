@@ -16,6 +16,8 @@
 //});
 
 use \App\Product as P; //指定路徑並且取別名
+//use Laravel\Socialite\Facades\Socialite;
+//use Illuminate\Support\Facades\Input;
 
 Route::get('/', "mycontroller@index");
 
@@ -62,6 +64,21 @@ Route::get('/auth/logout',"mycontroller@auth_logout");
 Route::get('/fb_redirect',"mycontroller@fb_redirect");
 
 Route::get('/fb_callback',"mycontroller@fb_callback");
+
+
+
+//
+//Route::get('/fb_callback', function ($facebook = "facebook")
+//{
+//    $provider = Socialite::with($facebook);
+//    if (Input::has('code'))
+//    {
+//        $user = $provider->user();
+//        return var_dump($user);
+//    } else {
+//        return $provider->scopes(['public_profile','user_friends'])->redirect();
+//    }
+//});
 
 
 
